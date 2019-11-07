@@ -1,6 +1,7 @@
-import {Entity, PrimaryGeneratedColumn, Column, Timestamp, OneToMany, ManyToOne, JoinColumn} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, Timestamp, OneToMany, ManyToOne, JoinColumn, ManyToMany} from "typeorm";
 import { Booking } from "./Booking";
 import { Owner } from "./Owner";
+import { Tag } from "./Tags";
 
 @Entity()
 export class Property {
@@ -23,5 +24,8 @@ export class Property {
 
     @OneToMany(type => Booking, booking => booking.propertise)
     bookings: Booking[];
+
+    @ManyToMany(type => Tag, tags => tags.properties)
+    tags: Tag[];
 
 }
