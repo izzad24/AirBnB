@@ -2,6 +2,8 @@ import {Entity, PrimaryGeneratedColumn, Column, Timestamp, OneToMany, ManyToOne,
 import { Booking } from "./Booking";
 import { Owner } from "./Owner";
 import { Tag } from "./Tags";
+import { Locality } from "./Locality";
+import { Review } from "./Review";
 
 @Entity()
 export class Property {
@@ -27,5 +29,11 @@ export class Property {
 
     @ManyToMany(type => Tag, tags => tags.properties)
     tags: Tag[];
+
+    @ManyToMany(type => Locality, locality => locality.properties)
+    locality: Locality[];
+
+    @OneToMany(type => Review, review => review.properties)
+    reviews: Review[];
 
 }
