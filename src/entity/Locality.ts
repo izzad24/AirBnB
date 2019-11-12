@@ -10,7 +10,7 @@ export class Locality {
     @Column()
     regionName: string
 
-    @ManyToMany(type => Property, property => property.tags)
+    @ManyToMany(type => Property, property => property.locality)
     @JoinTable({
         name: "property_locality",
         joinColumns: [{name: "locality_id"}],
